@@ -1,11 +1,10 @@
 def kangaroo(x1, v1, x2, v2)
-    while x1 <= 100000000 and x2 <= 100000000
-        if x1 + v1 == x2 + v2
+    if v1 > v2
+        j = (x2 - x1) % (v1 - v2)
+
+        if j == 0
             return "YES"
         end
-
-        x1 += v1
-        x2 += v2
     end
 
     return "NO"
