@@ -5,11 +5,10 @@ def biggerIsGreater(w)
             w = w.split("")
 
             # find first next alphabet index greater than w[i]
-            min = w[i+1..w.length-1].min{|a, b| a<=>b and w[i]<=>a}
-            j = w[i+1..w.length-1].index(min)
+            j = getNextAlphabetIndex(w[i..w.length-1])
 
             # swap
-            w[i], w[i+1+j] = w[i+1+j], w[i]
+            w[i], w[i+j] = w[i+j], w[i]
 
             # sort
             w[i+1..w.length-1] = w[i+1..w.length-1].sort
@@ -21,6 +20,13 @@ def biggerIsGreater(w)
     end
     
     return "no answer"
+end
+
+def getNextAlphabetIndex(w)
+    min = w[1..w.length-1].min{|a, b| a<=>b and w[0]<=>a}
+    j = w[1..w.length-1].index(min) 
+
+    return j+1
 end
 
 T = gets.to_i
