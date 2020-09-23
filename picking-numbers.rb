@@ -3,20 +3,12 @@ def pickingNumbers(a)
     numbers = Hash.new(0)
 
     a.each {|number| numbers[number] += 1 }
+    longestPair = 0
 
-    keys = numbers.keys.sort
-    longestPair = numbers.values.max
+    (0..99).each do |index|
+        length = numbers[index] + numbers[index+1]
 
-    keys.each_with_index do |key, index|
-        if index < keys.length - 1
-            difference = (key - keys[index+1]).abs
-
-            if difference <= 1
-                length = numbers[key] + numbers[keys[index+1]]
- 
-                longestPair = longestPair < length ? length : longestPair
-            end
-        end
+        longestPair = [longestPair, length].max
     end
 
     return longestPair
