@@ -4,13 +4,11 @@ def countApplesAndOranges(s, t, a, b, apples, oranges)
 end
 
 def countFruit(s, t, treeLocation, fruits)
+    fruitsCount = 0
     (0..fruits.length-1).each do |index|
         fruits[index] += treeLocation
-    end
 
-    fruitsCount = 0
-    fruits.each do |fruit|
-        if fruit >= s && fruit <= t
+        if fruits[index] >= s && fruits[index] <= t
             fruitsCount += 1
         end
     end
