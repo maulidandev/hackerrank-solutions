@@ -2,21 +2,8 @@ def permutationEquation(p)
     max = p.max
     result = Array.new
     (1..max).each do |x|
-        index = 0
-        p.each_with_index do |v, i|
-            if x == v
-                index = i + 1
-                break
-            end
-        end
-
-        y = 0
-        p.each_with_index do |v, i|
-            if index == v
-                y = i + 1
-                break
-            end
-        end
+        index = p.find_index(x) + 1
+        y = p.find_index(index) + 1
 
         result.push y
     end
