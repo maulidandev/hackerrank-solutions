@@ -1,7 +1,18 @@
 def introTutorial(v, arr)
-    arr.each_with_index do |n, i|
-        if n == v
-            return i
+    l = 0
+    r = arr.length - 1
+
+    while l <= r
+        pivot = l + (r - l) / 2
+
+        if arr[pivot] == v
+            return pivot
+        end
+
+        if arr[pivot] < v
+            l = pivot + 1
+        else
+            r = pivot - 1
         end
     end
 
