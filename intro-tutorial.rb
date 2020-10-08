@@ -1,5 +1,11 @@
 def introTutorial(v, arr)
-    arr.find_index v
+    arr.each_with_index do |n, i|
+        if n == v
+            return i
+        end
+    end
+
+    return -1
 end
 
 V = gets.to_i
