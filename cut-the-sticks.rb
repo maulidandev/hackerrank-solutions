@@ -1,15 +1,8 @@
 def cutTheSticks(arr)
     result = Array.new
-    loop do
-        break if arr.length == 0
-
+    while arr.length != 0 do
         result.push arr.length
-
-        min = arr.min
-        (0..arr.length-1).each do |i|
-            arr[i] -= min
-        end
-        arr.delete(0)
+        arr.delete(arr.min)
     end
 
     result
