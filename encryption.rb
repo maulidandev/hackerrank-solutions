@@ -1,32 +1,25 @@
 def encryption(s)
-    length = Math.sqrt(s.length)
-    max = length.ceil
+    n = s.length
+    max = Math.sqrt(n)
+    column = max.ceil
 
-    current = 0
-    splitText = Array.new
+    result = ""
 
-    while current < s.length
-        lastChar = current + max - 1
+    i = 0
+    while i < column
 
-        splitText.push s[current..lastChar]
-        current = lastChar + 1
-    end
+        j = i
+        while j < n
+            result += s[j]
 
-    result = Array.new
-
-    (0..max).each do |i|
-        text = ""
-
-        splitText.each do |t|
-            break if t[i].nil?
-
-            text += t[i]
+            j += column
         end
 
-        result.push text
+        result += " "
+        i += 1
     end
 
-    return result.join(" ")
+    return result
 end
 
 s = gets.to_s.rstrip
