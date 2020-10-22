@@ -1,19 +1,23 @@
 def workbook(n, k, arr)
     total = 0
     page = 1
+    problem = 0
+    chapter = 1
 
-    (1..n).each do |i|
-        (1..arr[i-1]).each do |j|
-            if page == j
-                total += 1
-            end
+    while chapter <= n
+        newProblem = [k + problem, arr[chapter-1]].min
 
-            if j % k == 0 && j != arr[i-1]
-                page += 1
-            end
+        if page <= newProblem and page > problem
+            total += 1
         end
 
+        problem = newProblem
         page += 1
+
+        if problem >= arr[chapter-1]
+            chapter += 1
+            problem = 0
+        end
     end
 
     return total
